@@ -59,8 +59,6 @@ def householder_reduction(a):
 
 
 
-
-
 def lu_factorization(a):
     """
     :param a: Input matrix
