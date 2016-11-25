@@ -43,10 +43,6 @@ def householder_reduction(a):
             u = a[i: m, i].copy()
             u[0] -= norm(a[i:, i])
             R[i:m, i:m] = eye(m - i, m - i) - 2 * array(mat(u).T * mat(u)) / dot(u, u)
-
-            print 'R',R
-            print 'a',a
-            print 'temp',u
             #a = array(mat(R)*mat(a))
             a[i:m, i:n] = dot(R[i:m, i:m], a[i:m, i:n])
             print 'change a',a
@@ -56,6 +52,31 @@ def householder_reduction(a):
         print "Q = ", '\n', Q
         print "R = ", '\n', R_final
         return Q, R_final
+
+
+def givens_reduction(a):
+    m, n = shape(a)
+    if linalg.matrix_rank(a) != n:
+        print "\nThe rank is not n "
+    else:
+        A = a.copy()
+        Q = eye(m, m)
+        for i in range(n - 1):
+            for j in range(i + 1, m):
+                P = eye(m, m)
+                c = a[i, i] / sqrt(power(a[i, i], 2) + power(a[j, i], 2))
+                s = a[j, i] / sqrt(power(a[i, i], 2) + power(a[j, i], 2))
+                P[i, i] = c
+                P[i, j] = s
+                P[j, i] = -s
+                P[j, j] = c
+                a = dot(P, a)
+                Q = dot(Q, P.T)
+        R = around(a, 2)
+        print "A =", '\n', A
+        print "Q = ", '\n', Q
+        print "R = ", '\n', R
+        return Q, R
 
 
 def lu_factorization(a):
@@ -106,4 +127,5 @@ if '__main__' == __name__:
     A = create_matrix()
     #lu_factorization(A)
     #gram_schmidt(A)
-    householder_reduction(A)
+    #householder_reduction(A)
+    givens_reduction(A)
