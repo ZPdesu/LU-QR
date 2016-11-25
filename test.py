@@ -1,4 +1,6 @@
+# -*- coding: UTF-8 -*-
 import numpy as np
-print np.power(2.4,3)
-print np.sqrt(2.4)
-print np.around(4.35,1)
+
+
+a = input('number')
+print type(a)
