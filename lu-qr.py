@@ -123,6 +123,7 @@ def lu_factorization(a):
         return L, U, P
 
 
+
 if '__main__' == __name__:
     A = create_matrix()
     #lu_factorization(A)
