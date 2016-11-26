@@ -147,7 +147,7 @@ def main():
             Q, R = a.givens_reduction()
             print 'A = ', '\n', A, '\n', 'Q = ', '\n', Q, '\n','R = ', '\n', R, '\n'
         else:
-            print ' NO correct input'
+            print ' no correct input'
 
         flag2 = input('continue: 1, end: 2\n')
         if flag2 == 2:
